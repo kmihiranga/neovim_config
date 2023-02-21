@@ -2,7 +2,7 @@
 imap jj <Esc>
 
 " Syntax highlighting
-syntax on
+:syntax on
 
 :set nocompatible
 :set redrawtime=10000
@@ -96,7 +96,7 @@ nnoremap <expr> <TAB> pumvisible() ? "<C-y>" : "<TAB>"<CR>
 " Don't pass messages to |ins-completion-menu|.
 :set shortmess+=c
 
-:colorscheme darcula
+:colorscheme gruvbox
 
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
@@ -120,5 +120,23 @@ let g:airline_symbols.linenr = ''
 let g:prettier#exec_cmd_path = "~/.vim/plugged/vim-prettier/node_modules/prettier"
 " Max line length that prettier will wrap on: a number or 'auto'
 let g:prettier#config#print_width = 100 " default is 'auto'
+
+"*****************************************************************************
+"" golang
+"*****************************************************************************
+
+" set tab width of 4 spaces for go
+autocmd! BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+
+let g:go_fmt_command="goimports"
+let g:go_rename_command="gopls"
+
+" improves Go syntax highlighting
+let g:go_highlight_operators=1
+let g:go_highlight_functions=1
+let g:go_highlight_function_parameters=1
+let g:go_highlight_function_calls=1
+let g:go_highlight_types=1
+let g:go_highlight_fields=1
 
 inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
